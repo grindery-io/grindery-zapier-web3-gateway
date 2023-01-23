@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "replaceActionCamelCase";
-const replaceActionCamelCase_action_hidden = require("../triggers/replaceActionCamelCase_action_hidden");
+const driver_id = "chainlink";
+const chainlink_action_hidden = require("../triggers/chainlink_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("chainlink");
+    let selected_driver_response = await client.getDriver("replaceDriver");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -92,12 +92,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "replaceActionCamelCase_action_hidden.key",
+        dynamic: "chainlink_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("chainlink");
+          let response = await client.getDriver("replaceDriver");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};

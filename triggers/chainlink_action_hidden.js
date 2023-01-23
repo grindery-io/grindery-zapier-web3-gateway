@@ -4,7 +4,7 @@ const NexusClient = require("grindery-nexus-client").default;
 const perform = async (z, bundle) => {
   const client = new NexusClient();
   try {
-    let response = await client.getDriver("chainlink");
+    let response = await client.getDriver("replaceDriver");
     z.console.log("List Driver Response: ", response);
     // this should return an array of objects
     let driver_actions = response.actions;
@@ -24,7 +24,7 @@ const perform = async (z, bundle) => {
     }
   } catch (error) {
     z.console.log(
-      "Auth Error in List Driver Actions Trigger (replaceActionCamelCase_hidden.js)",
+      "Auth Error in List Driver Actions Trigger (chainlink_hidden.js)",
       error.message
     );
     if (error.message === "Invalid access token") {
