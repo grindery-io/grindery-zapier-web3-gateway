@@ -1,8 +1,8 @@
 const NexusClient = require("grindery-nexus-client").default;
 const jwt_decode = require("jwt-decode");
 
-const driver_id = "replaceTrigger";
-const replaceTrigger_hidden = require("./replaceTrigger_hidden");
+const driver_id = "matic_token";
+const Matic_token_hidden = require("./matic_token_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -35,13 +35,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (replaceTrigger.js)",
+        "Auth Error in creatorID function (matic_token.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (replaceTrigger.js)",
+        "Error in creatorID function (matic_token.js)",
         error.message
       );
     }
@@ -270,11 +270,11 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "Matic Token",
-  noun: "Matic Token Token",
+  key: "Matic_token",
+  noun: "Matic_token Token",
 
   display: {
-    label: "Matic Token",
+    label: "Matic_token",
     description: "Triggers when evmWallet Blockchain.",
   },
 
@@ -298,7 +298,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "replaceTriggertTitleCase_hidden.key",
+        dynamic: "Matic_token_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

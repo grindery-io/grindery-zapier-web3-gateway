@@ -71,11 +71,11 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "Matic Token",
-  noun: "Matic Token",
+  key: "Matic_token",
+  noun: "Matic_token",
 
   display: {
-    label: "Matic Token Actions",
+    label: "Matic_token Actions",
     description: "Configure actions using erc20 directly in Zapier",
   },
 
@@ -92,7 +92,7 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "Matic Token_action_hidden.key",
+        dynamic: "Matic_token_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
