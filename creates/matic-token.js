@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "chainlink";
-const chainlink_action_hidden = require("../triggers/chainlink_action_hidden");
+const driver_id = "matic_token";
+const matic_token_action_hidden = require("../triggers/matic_token_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("chainlink");
+    let selected_driver_response = await client.getDriver("matic-token");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,11 +71,11 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "Chainlink",
-  noun: "Chainlink",
+  key: "Matic Token",
+  noun: "Matic Token",
 
   display: {
-    label: "Chainlink Actions",
+    label: "Matic Token Actions",
     description: "Configure actions using erc20 directly in Zapier",
   },
 
@@ -92,12 +92,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "Chainlink_action_hidden.key",
+        dynamic: "Matic Token_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("chainlink");
+          let response = await client.getDriver("matic-token");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};
