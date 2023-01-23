@@ -16,7 +16,7 @@ const evmWallet = require("./triggers/evmWallet");
 //--DECLARED_VARIABLES--//
 
 
-const chainlink_action = require("./creates/chainlink")
+
 
 
 module.exports = {
