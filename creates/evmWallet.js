@@ -1,7 +1,7 @@
 const NexusClient = require("grindery-nexus-client").default;
 
-const driver_id = "matic_token";
-const matic_token_action_hidden = require("../triggers/matic_token_action_hidden");
+const driver_id = "evmWallet";
+const evmWallet_action_hidden = require("../triggers/evmWallet_action_hidden");
 
 // create a particular run_grindery_action by name
 const perform = async (z, bundle) => {
@@ -11,7 +11,7 @@ const perform = async (z, bundle) => {
   let input = {}; //input object
   try {
     //Get the driver
-    let selected_driver_response = await client.getDriver("matic-token");
+    let selected_driver_response = await client.getDriver("evmWallet");
     let selected_driver_actions = selected_driver_response.actions; //get the driver's actions
     let filteredActionArray = [];
     //get the selected driver action
@@ -71,12 +71,13 @@ const perform = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#createschema
-  key: "Matic_token",
-  noun: "Matic_token",
+  key: "evmWallet",
+  noun: "EvmWallet",
 
   display: {
-    label: "Matic_token Actions",
-    description: "Configure actions using erc20 directly in Zapier",
+    label: "Native Tokens on EVM Chains",
+    description: "Configure actions using evmWallet directly in Zapier.",
+    important: true
   },
 
   operation: {
@@ -92,12 +93,12 @@ module.exports = {
         type: "string",
         required: true,
         altersDynamicFields: true,
-        dynamic: "Matic_token_action_hidden.key",
+        dynamic: "evmWallet_action_hidden.key",
       },
       async function (z, bundle) {
         const client = new NexusClient();
         try {
-          let response = await client.getDriver("matic-token");
+          let response = await client.getDriver("evmWallet");
           //z.console.log("listing driver details: ", response);
           let driver_actions = response.actions; //match the selected driver
           let choices = {};

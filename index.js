@@ -10,19 +10,31 @@ const {
 } = require("./authentication");
 
 const evmWallet = require("./triggers/evmWallet");
-//const list_driver_triggers = require('./triggers/list_driver_triggers');
 //const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
 
-const matic_token_action = require("./creates/matic_token")
-const matic_token = require("./triggers/matic_token")
+const evmWallet_action = require("./creates/evmWallet")
+
+
+
+
+
+const erc20_action = require("./creates/erc20")
+const erc20 = require("./triggers/erc20")
+
+
+
+
+
+
 
 
 
 module.exports = {
   // This is just shorthand to reference the installed dependencies you have.
+
   // Zapier will need to know these before we can upload.
   version: require("./package.json").version,
   platformVersion: require("zapier-platform-core").version,
