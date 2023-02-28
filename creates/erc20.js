@@ -75,8 +75,8 @@ module.exports = {
   noun: "Erc20",
 
   display: {
-    label: "ERC20 Tokens on EVM Chains",
-    description: "Configure actions using erc20 directly in Zapier.",
+    label: "ERC20 Tokens on EVM Chains (1.0.0)",
+    description: "Configure actions using ERC20 Tokens on EVM Chains (1.0.0) directly in Zapier.",
   },
 
   operation: {

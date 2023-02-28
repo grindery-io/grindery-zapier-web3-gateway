@@ -24,7 +24,7 @@ const perform = async (z, bundle) => {
     }
   } catch (error) {
     z.console.log(
-      "Auth Error in List Driver Actions Trigger (evmWallet_action_hidden.js)",
+      "Auth Error in List Driver Actions Trigger (evmWallet_hidden.js)",
       error.message
     );
     if (error.message === "Invalid access token") {
@@ -41,7 +41,7 @@ module.exports = {
 
   display: {
     label: "EvmWallet Actions",
-    description: "Triggers new evmWallet events.",
+    description: "Triggers new EvmWallet events.",
     hidden: true,
   },
 

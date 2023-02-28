@@ -5,7 +5,7 @@ const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
 const driver_id = "evmWallet";
-const list_driver_triggers = require("./list_driver_triggers");
+const evmWallet_hidden = require("./evmWallet_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (trigger_from_a_grindery_workflow.js)",
+        "Auth Error in creatorID function (evmWallet.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (trigger_from_a_grindery_workflow.js)",
+        "Error in creatorID function (evmWallet.js)",
         error.message
       );
     }
@@ -70,8 +70,8 @@ const performTransactionList = async (z, bundle) => {
       limit: 1,
     },
     body: {
-      trigger_id: "evmWallet", //driver ID e.g. evmWallet
-      trigger_item: "newTransaction", //trigger ID e.g. newTransaction
+      trigger_id: driver_id, //driver ID e.g. evmWallet
+      trigger_item: bundle.inputData.trigger_id, //trigger ID e.g. newTransaction
     },
   };
   const response = await z.request(options);
@@ -274,11 +274,12 @@ module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
   key: "evmWallet",
-  noun: "EVM Wallet",
+  noun: "EvmWallet Token",
 
   display: {
-    label: "Native Tokens on EVM Chains",
-    description: "Triggers when evmWallet Blockchain event occurs.",
+    label: "Native Tokens on EVM Chains (1.0.0)",
+    important: true,
+    description: "Triggers when a native token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
   },
 
   operation: {
@@ -301,7 +302,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "list_driver_triggers.key",
+        dynamic: "evmWallet_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");

@@ -9,20 +9,33 @@ const {
   afters = [],
 } = require("./authentication");
 
-const evmWallet = require("./triggers/evmWallet");
+
 //const near_hidden = require("./triggers/near");
 
 //--DECLARED_VARIABLES--//
 
 
+
 const evmWallet_action = require("./creates/evmWallet")
-
-
-
-
-
+const evmWallet = require("./triggers/evmWallet")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
