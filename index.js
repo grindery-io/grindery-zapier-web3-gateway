@@ -108,6 +108,6 @@ function triggers() {
     ...triggers
   }*/
   //console.log("TRIGGER Object: ", triggers);
-  console.log("Trigger: ", triggers);
+  //console.log("Trigger: ", triggers);
   return triggers;
 }
