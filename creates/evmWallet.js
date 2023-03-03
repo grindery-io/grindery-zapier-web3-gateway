@@ -77,7 +77,7 @@ module.exports = {
   display: {
     label: "Native Tokens on EVM Chains (1.0.0)",
     important: true,
-    description: "Configure actions using Native Tokens on EVM Chains (1.0.0) directly in Zapier.",
+    description: "Interact with native tokens on EVM Chains.",
   },
 
   operation: {
