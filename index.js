@@ -16,10 +16,18 @@ const {
 
 
 
+const syndicate_action = require("./creates/syndicate")
+const syndicate = require("./triggers/syndicate")
+const safeTriggers = require("./triggers/safeTriggers")
+const nftmint_action = require("./creates/nftmint")
 const evmWallet_action = require("./creates/evmWallet")
 const evmWallet = require("./triggers/evmWallet")
 const erc20_action = require("./creates/erc20")
 const erc20 = require("./triggers/erc20")
+
+
+
+
 
 
 

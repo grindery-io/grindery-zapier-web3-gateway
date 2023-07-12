@@ -4,8 +4,8 @@ const jwt_decode = require("jwt-decode");
 const ApiEndpoint = require("../api");
 baseUrl = ApiEndpoint.baseUrl.api;
 
-const driver_id = "erc20";
-const erc20_hidden = require("./erc20_hidden");
+const driver_id = "syndicate";
+const syndicate_hidden = require("./syndicate_hidden");
 
 //uniqueID Generate Token ID
 function uniqueID() {
@@ -38,13 +38,13 @@ const creatorID = async (z, bundle) => {
     //force token refresh if invalid
     if (error.message === "Invalid access token") {
       z.console.log(
-        "Auth Error in creatorID function (erc20.js)",
+        "Auth Error in creatorID function (syndicate.js)",
         error.message
       );
       throw new z.errors.RefreshAuthError();
     } else {
       z.console.log(
-        "Error in creatorID function (erc20.js)",
+        "Error in creatorID function (syndicate.js)",
         error.message
       );
     }
@@ -274,12 +274,12 @@ const unsubscribeHook = async (z, bundle) => {
 module.exports = {
   // see here for a full list of available properties:
   // https://github.com/zapier/zapier-platform/blob/master/packages/schema/docs/build/schema.md#triggerschema
-  key: "erc20",
-  noun: "Erc20 Token",
+  key: "syndicate",
+  noun: "Syndicate Token",
 
   display: {
-    label: "ERC20 Tokens on EVM Chains (1.0.0)",
-    description: "Triggers when an ERC-20 token transaction occurs on Ethereum, Binance, or any other EVM Chain (connector created by Grindery).",
+    label: "Syndicate (1.0.0)",
+    description: "Triggers when a new member or deposit is detected in an Investment Club.",
   },
 
   operation: {
@@ -302,7 +302,7 @@ module.exports = {
         label: "Driver Trigger",
         type: "string",
         altersDynamicFields: true,
-        dynamic: "erc20_hidden.key",
+        dynamic: "syndicate_hidden.key",
       },
       async function (z, bundle) {
         console.log("Running Async function");
