@@ -57,10 +57,10 @@ const refreshAccessToken = (z, bundle) => {
 const testAuth = (z, bundle) => {
   // Normally you want to make a request to an endpoint that is either specifically designed to test auth, or one that
   // every user will have access to, such as an account or profile endpoint like /me.
-  const client = new NexusClient();
+
   try {
-    client.authenticate(`${bundle.authData.access_token}`);
-    const user = client.getUser();
+    const client = new NexusClient(bundle.authData.access_token);
+    const user = client.user.get();
     if (user !== null) {
       return { address: user.address };
     } else {
